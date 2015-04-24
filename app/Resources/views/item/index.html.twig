@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a href="{{ path("homepage") }}">メニューへ</a>
+
+<p>商品を選んでください</p>
+
+<ul>
+    {% for item in items %}
+        <li><a href="{{ path("app_item_selectdate", {"id":item.id}) }}">{{ item.name }}</a> ({{ item.price|number_format }}円)
+            <ul>
+                {% for itemmaterial in item.itemMaterials %}
+                    <li>{{ itemmaterial.Material.name }} - {{ itemmaterial.number }}本</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

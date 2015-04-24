@@ -1,0 +1,25 @@
+FleurMemoire\Item\Entity\Item:
+  item1:
+    name: 普通のセット１
+    price: 1000
+  item2:
+    name: 普通のセット２
+    price: 300
+  item3:
+    name: 普通のセット３
+    price: 800
+
+
+FleurMemoire\Item\Entity\ItemMaterial:
+  i1_m1:
+    __construct: [@item1, @material1, 3]
+  i1_m2:
+    __construct: [@item1, @material3, 1]
+  i1_m3:
+    __construct: [@item1, @material6, 1]
+  i2_m1:
+    __construct: [@item2, @material9, 8]
+  i3_m1:
+    __construct: [@item3, @material2, 2]
+  i3_m2:
+    __construct: [@item3, @material3, 2]

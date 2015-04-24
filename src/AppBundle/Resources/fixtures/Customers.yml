@@ -1,0 +1,3 @@
+FleurMemoire\Sales\Entity\Customer:
+  customer{1..10}:
+    name: <name()>

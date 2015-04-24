@@ -1,0 +1,35 @@
+FleurMemoire\Util\Date (local):
+  today:
+    __construct: ['']
+
+FleurMemoire\Stock\Entity\DailyStockOfMaterial:
+  stock1:
+    __construct: [@material1, @today]
+    startQty: 20
+  stock2:
+    __construct: [@material2, @today]
+    startQty: 40
+  stock3:
+    __construct: [@material3, @today]
+    startQty: 100
+  stock4:
+    __construct: [@material4, @today]
+    startQty: 0
+  stock5:
+    __construct: [@material5, @today]
+    startQty: 30
+  stock6:
+    __construct: [@material6, @today]
+    startQty: 200
+  stock7:
+    __construct: [@material7, @today]
+    startQty: 10
+  stock8:
+    __construct: [@material8, @today]
+    startQty: 60
+  stock9:
+    __construct: [@material9, @today]
+    startQty: 80
+  stock10:
+    __construct: [@material10, @today]
+    startQty: 100

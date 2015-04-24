@@ -1,0 +1,94 @@
+services:
+  entity_manager:
+    synthetic: true
+
+  #
+  # 商品
+  #
+  fleurmemoire.item.item.repository:
+    class: FleurMemoire\Item\Repository\ItemRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Item\Entity\Item
+
+  fleurmemoire.item.material.repository:
+    class: FleurMemoire\Item\Repository\MaterialRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Item\Entity\Material
+
+  fleurmemoire.item.item_material.repository:
+    class: FleurMemoire\Item\Repository\ItemMaterialRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Item\Entity\ItemMaterial
+
+  #
+  # 販売
+  #
+  fleurmemoire.sales.order.repository:
+    class: FleurMemoire\Sales\Repository\OrderRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Sales\Entity\Order
+
+  fleurmemoire.sales.customer.repository:
+    class: FleurMemoire\Sales\Repository\CustomerRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Sales\Entity\Customer
+
+  #
+  # 購買
+  #
+  fleurmemoire.purchase.purchase.repository:
+    class: FleurMemoire\Purchase\Repository\PurchaseRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Purchase\Entity\Purchase
+
+  fleurmemoire.purchase.supplier.repository:
+    class: FleurMemoire\Purchase\Repository\SupplierRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Purchase\Entity\Supplier
+
+
+  #
+  # 在庫
+  #
+  fleurmemoire.stock.daily_stock_of_material.repository:
+    class: FleurMemoire\Stock\Repository\DailyStockOfMaterialRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Stock\Entity\DailyStockOfMaterial
+
+  fleurmemoire.stock.lot.repository:
+    class: FleurMemoire\Stock\Repository\LotRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Stock\Entity\Lot
+
+  fleurmemoire.stock.daily_transition_of_lot.repository:
+    class: FleurMemoire\Stock\Repository\DailyTransitionOfLotRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Stock\Entity\DailyTransitionOfLot
+
+  fleurmemoire.stock.disposal.repository:
+    class: FleurMemoire\Stock\Repository\DisposalRepository
+    factory_service: entity_manager
+    factory_method:  getRepository
+    arguments:
+      - FleurMemoire\Stock\Entity\Disposal
+

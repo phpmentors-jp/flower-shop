@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a href="{{ path("homepage") }}">メニューへ</a>
+<a href="{{ path("app_stock_index") }}">単品選択へ戻る</a>
+
+<h1>単品在庫予定表（{{ material.name }}）</h1>
+<ul>
+    <li>品質保持日数：{{ material.Duration.days }}</li>
+    <li>発注リードタイム：{{ material.LeadTime.days }}</li>
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>日付</th>
+            <th>前日残</th>
+            <th>当日入荷</th>
+            <th>当日出荷</th>
+            <th>当日廃棄</th>
+            <th>当日残</th>
+            <th>発注</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% set initialDate = null %}
+    {% for date in term %}
+        {% if initialDate == null %}{% set initialDate = date %}{% endif %}
+        <tr>
+            <th>{{ date }}</th>
+        {% if stocks[loop.index0] is defined %}{% set stock = stocks[loop.index0] %}
+            <td>{{ stock.startQty|number_format }}</td>
+            <td>{{ stock.arrivalQty|number_format }}</td>
+            <td>{{ stock.shipmentQty|number_format }}</td>
+            <td>{{ stock.disposalQty|number_format }}</td>
+            <td>{{ stock.endQty|number_format }}</td>
+        {% else %}
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        {% endif %}
+            <td>
+        {% if material.LeadTime.isPurchaseableDate(date, initialDate) %}
+            <a href="{{ path("app_purchase_purchase", {"id":material.id, "dateStr":date}) }}">10個注文</a>
+        {% else %}
+            -
+        {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

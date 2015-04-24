@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a href="{{ path("homepage") }}">メニューへ</a>
+
+<h1>単品在庫予定表（単品を選択）</h1>
+
+<ul>
+    {% for material in materials %}
+        <li><a href="{{ path("app_stock_dailystocklist", {"id":material.id}) }}">{{ material.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

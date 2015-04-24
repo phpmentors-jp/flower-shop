@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a href="{{ path("homepage") }}">メニューへ</a>
+<h2>{{ item.name }} ({{ item.price|number_format }}円)</h2>
+<p>材料</p>
+<ul>
+    {% for itemmaterial in item.itemMaterials %}
+        <li>{{ itemmaterial.Material.name }} - {{ itemmaterial.number }}本</li>
+    {% endfor %}
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th>日付</th>
+            <th>受付可能</th>
+            <th>注文</th>
+            {% for itemmaterial in item.itemMaterials %}
+                {% set material = itemmaterial.Material %}
+                <th>{{ itemmaterial.Material.name }} 前日在庫 (LT {{ material.LeadTime.days }}  D {{ material.Duration.days }})</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+{% for date, availableInfo in availableList %}
+    <tr>
+        <th>{{ date }}</th>
+        {% if date >= availableInfo.term.end %}
+            <td>受付可能</td>
+            <td>
+                <a href="{{ path("app_item_order", {"id":item.id, "dateStr":date}) }}">1セット注文</a>
+            </td>
+        {% elseif availableInfo.availableMax == 0 %}
+            <td>不可</td><td>-</td>
+        {% else %}
+            <td>{{ availableInfo.availableMax }}個受付可能</td>
+            <td>
+                <a href="{{ path("app_item_order", {"id":item.id, "dateStr":date}) }}">1セット注文</a>
+            </td>
+        {% endif %}
+        {% for itemmaterial in item.itemMaterials %}
+            <td>{{ availableInfo.stocks[itemmaterial.Material.id].endQty }}</td>
+        {% endfor %}
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

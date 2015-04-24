@@ -1,0 +1,47 @@
+FleurMemoire\Item\Entity\Material:
+  material{1..10}:
+    name: 材料<current()>
+
+FleurMemoire\Purchase\Entity\MaterialLeadTime:
+  material1_leadtime:
+    __construct: [@supplier1, @material1, 4]
+  material2_leadtime:
+    __construct: [@supplier1, @material2, 4]
+  material3_leadtime:
+    __construct: [@supplier1, @material3, 4]
+  material4_leadtime:
+    __construct: [@supplier1, @material4, 4]
+  material5_leadtime:
+    __construct: [@supplier1, @material5, 4]
+  material6_leadtime:
+    __construct: [@supplier1, @material6, 4]
+  material7_leadtime:
+    __construct: [@supplier1, @material7, 4]
+  material8_leadtime:
+    __construct: [@supplier1, @material8, 4]
+  material9_leadtime:
+    __construct: [@supplier1, @material9, 4]
+  material10_leadtime:
+    __construct: [@supplier1, @material10, 4]
+
+FleurMemoire\Stock\Entity\MaterialDuration:
+  material1_duration:
+    __construct: [@material1, 3]
+  material2_duration:
+    __construct: [@material2, 4]
+  material3_duration:
+    __construct: [@material3, 2]
+  material4_duration:
+    __construct: [@material4, 4]
+  material5_duration:
+    __construct: [@material5, 8]
+  material6_duration:
+    __construct: [@material6, 3]
+  material7_duration:
+    __construct: [@material7, 2]
+  material8_duration:
+    __construct: [@material8, 3]
+  material9_duration:
+    __construct: [@material9, 3]
+  material10_duration:
+    __construct: [@material10, 4]
